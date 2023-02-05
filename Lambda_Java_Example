@@ -1,0 +1,11 @@
+// in Java
+interface Square {
+    int getSquare(int x);
+    }
+    Square square = (x) -> x * x;
+
+System.out.println(square.getSquare(10));  // Output: 100
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List<Integer> squaredNumbers = numbers.stream().map(x -> x * x).collect(Collectors.toList());
+// Output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 10]
+System.out.println(squaredNumbers);

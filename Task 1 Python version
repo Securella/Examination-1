@@ -1,0 +1,102 @@
+# Ticket types and prices listed
+ticket_types = ['1. Budget', '2. Economy', '3. VIP']
+ticket_prices = [500, 750, 2000]
+dash = '-'*7
+
+
+# Define menu with ticket types and buttons
+def menu():
+
+    print('Ticket types: ')
+    for x in range(0, len(ticket_types)):
+        print(f'{ticket_types[x]:<11}({ticket_prices[x]:>4}kr)')
+
+
+menu()
+ticket_choice = int(input('Input ticket type >> '))
+print()
+
+
+if ticket_choice == 1:
+    ticket_price = 500
+elif ticket_choice == 2:
+    ticket_price = 750
+elif ticket_choice == 3:
+    ticket_price = 2000
+
+bag = 0
+bag_price = 0
+meal = 0
+meal_price = 0
+
+
+# Define what user has
+def bag_meal():
+    print('Currently you have: ')
+    print(f'\t{bag} bag(s) registered')
+    print(f'\t{meal} meal(s) registered')
+    print()
+
+
+def option_menu():
+    print('Here are your options: ')
+    options = ['1. Add bag (max 1)', '2. Add meal (max 1)', '3. Remove bag', '4. Remove meal', '5. Finalize ticket']
+    for y in range(0, len(options)):
+        print(f'{options[y]:<11}')
+
+
+loop = 1
+optional_choice = 0
+while loop == 1:
+    bag_meal()
+    option_menu()
+    optional_choice = int(input('Your choice >> '))
+
+    if optional_choice == 1:
+        bag = 1
+        bag_price = 200
+    elif optional_choice == 2:
+        meal = 1
+        meal_price = 150
+    elif optional_choice == 3:
+        bag = 0
+        bag_price = 0
+    elif optional_choice == 4:
+        meal = 0
+        meal_price = 0
+    elif optional_choice == 5:
+        break
+loop = 0
+total = ticket_price + bag_price + meal_price
+
+
+# Define total and recipt
+def receipt():
+    if bag == 0 and meal == 0:
+        print('Receipt:')
+        print(f'Ticket :{ticket_price:>5}kr')
+        print(f'{dash:>15}')
+        print(f'Total  :{total:>5}kr')
+    elif bag == 1 and meal == 0:
+        print('Receipt:')
+        print(f'Ticket :{ticket_price:>5}kr')
+        print(f'Bag    :{bag_price:>5}kr')
+        print(f'{dash:>15}')
+        print(f'Total  :{total:>5}kr')
+    elif bag == 0 and meal == 1:
+        print('Receipt:')
+        print(f'Ticket :{ticket_price:>5}kr')
+        print(f'Meal   :{meal_price:>5}kr')
+        print(f'{dash:>15}')
+        print(f'Total  :{total:>5}kr')
+    else:
+        print('Receipt:')
+        print(f'Ticket :{ticket_price:>5}kr')
+        print(f'Bag    :{bag_price:>5}kr')
+        print(f'Meal   :{meal_price:>5}kr')
+        print(f'{dash:>15}')
+        print(f'Total  :{total:>5}kr')
+    print()
+
+
+receipt()

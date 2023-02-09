@@ -1,0 +1,57 @@
+# Develop a script to know beforehand how many bags will fit in the truck
+# and value of all the bags combined.
+
+print('Welcome to the Money Bag Transport Calculator (M.B.T.C)')
+print('-'*55)
+print()
+
+# While loop when user runs script.
+# If user enters a volume < 100L ask again until volume >=100L.
+volume = int(input('What is the volume of the truck (>= 100L): '))
+loop = True
+while loop:
+    if volume < 100:
+        volume = int(input('What is the volume of the truck (>= 100L): '))
+    else:
+        loop = False
+
+# Declare 3 sizes (20L, 50L, and 80L)
+small = 20
+medium = 50
+big = 80
+
+small_bag = 0
+medium_bag = 0
+big_bag = 0
+# Calculate how many money bags of each size fits in the specified truck
+# Use as many of the bigger bags as possible!
+
+left = volume
+if left >= big:
+    big_bag = left // big
+    left = left % big
+    if left >= medium:
+        medium_bag = left // medium
+        left = left % medium
+        if left >= small:
+            small_bag = left // small
+            left = left % small
+    elif left >= small:
+        small_bag = left // small
+        left = left % small
+
+# Calculate price
+price_small = 10000
+price_medium = 30000
+price_big = 60000
+
+total = small_bag*price_small + medium_bag*price_medium + big_bag*price_big
+# Display bags and cost
+print('Packing plan')
+print('-'*12)
+print(f'{big_bag} big bags')
+print(f'{medium_bag} medium bags')
+print(f'{small_bag} small bags')
+print()
+print(f'Space left : {left}L')
+print(f'Total value: {total}kr')
